@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="btnPlay" Content="Button" HorizontalAlignment="Left" Margin="354,351,0,0" VerticalAlignment="Top" Width="39" Height="27" RenderTransformOrigin="2.052,-0.465"/>
+        <Image x:Name="imgThumb" HorizontalAlignment="Left" Height="194" Margin="274,76,0,0" VerticalAlignment="Top" Width="220"/>
+        <Button x:Name="btnLastSong" Content="Button" HorizontalAlignment="Left" Margin="254,351,0,0" VerticalAlignment="Top" Width="75" Height="27"/>
+        <Button x:Name="btnNextSong" Content="Button" HorizontalAlignment="Left" Margin="419,351,0,0" VerticalAlignment="Top" Width="75" Height="27"/>
+        <Slider x:Name="sliVolume" HorizontalAlignment="Left" Margin="123,360,0,0" VerticalAlignment="Top" Width="66"/>
+        <Slider x:Name="sliDuration" HorizontalAlignment="Left" Margin="144,310,0,0" VerticalAlignment="Top" Width="487"/>
+        <Button x:Name="btnShuffle" Content="Button" HorizontalAlignment="Left" Margin="60,310,0,0" VerticalAlignment="Top" Width="39"/>
+        <Button x:Name="btnLoop" Content="Button" HorizontalAlignment="Left" Margin="673,310,0,0" VerticalAlignment="Top" Width="37"/>
+        <Label x:Name="lblCurrentTime" Content="Label" HorizontalAlignment="Left" Margin="104,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.452,-0.168"/>
+        <Label x:Name="lblEndTime" Content="Label" HorizontalAlignment="Left" Margin="630,307,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTitle" Content="Label" HorizontalAlignment="Left" Margin="354,19,0,0" VerticalAlignment="Top" Width="38"/>
+        <Label x:Name="lblArtistName" Content="Label" HorizontalAlignment="Left" Margin="354,45,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
