@@ -58,6 +58,7 @@
     <Compile Include="Controls\MusicControl.xaml.cs">
       <DependentUpon>MusicControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Song.cs" />
     <Compile Include="Volume.cs" />
     <Page Include="Controls\MusicControl.xaml">
       <SubType>Designer</SubType>

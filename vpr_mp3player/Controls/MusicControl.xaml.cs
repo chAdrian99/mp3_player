@@ -22,9 +22,10 @@ namespace vpr_mp3player.Controls
     public partial class MusicControl : UserControl
     {
         private bool isPlaying = false;
-        private int zahl = 0;
-
+        
         private MediaPlayer _player = new MediaPlayer();
+
+        public List<Song> Songs { get; set; }
 
         public MediaPlayer Player
         {
@@ -36,6 +37,7 @@ namespace vpr_mp3player.Controls
         {
             InitializeComponent();
             Player.Volume = (double)sliVolume.Value;
+            Songs = new List<Song>();
         }
 
         #region Events
@@ -47,12 +49,18 @@ namespace vpr_mp3player.Controls
         /// <param name="e">Routed event args</param>
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            if (!isPlaying && zahl > 0)
+            if (playlist.Items.Count <= 0)
+            {
+                return;
+            }
+
+            if (!isPlaying)
             {
                 //TODO crash wenn nichts in listbox gewählt ist
-
-
-
+                if (playlist.SelectedItem == null)
+                {
+                    return;
+                }
 
                 lblTitle.Content = (playlist.SelectedValue).ToString();
                 Player.Open(new Uri((playlist.SelectedValue).ToString()));
@@ -83,26 +91,22 @@ namespace vpr_mp3player.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
-        string[] files;
         private void btnOpenAudioFile_Click(object sender, RoutedEventArgs e)
         {
-            
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
             openFileDialog.ShowDialog();
 
-            files = openFileDialog.FileNames;
+            var path = openFileDialog.FileNames[0];
+            var title = path.Split('\\').Last();
 
-            foreach (string song in files)
+            Songs.Add(new Song()
             {
-                if (!playlist.Items.Contains(song))
-                {
-                    playlist.Items.Add(song);
-                    zahl++;
-                }
-            }
+                Title = title,
+                Path = path,
+            });
 
+            playlist.ItemsSource = Songs;
         }
 
         #endregion

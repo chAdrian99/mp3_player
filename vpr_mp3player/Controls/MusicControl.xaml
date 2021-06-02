@@ -27,7 +27,16 @@
         <Label x:Name="lblEndTime" HorizontalContentAlignment="Center" Content="1:08&#xD;&#xA;" HorizontalAlignment="Left" Margin="753,451,0,0" VerticalAlignment="Top" Width="34" Height="26"/>
         <Button x:Name="btnAddSong" Content="Add Song" Click="btnOpenAudioFile_Click" HorizontalAlignment="Left" Margin="30,402,0,0" VerticalAlignment="Top" Width="118" Height="24"/>
         <Label x:Name="lblTitle" HorizontalContentAlignment="Center" Content="TITEL" VerticalAlignment="Top" Height="52" FontSize="36" Margin="0,21,0,0"/>
-        <ListBox x:Name="playlist" HorizontalAlignment="Left" Height="270" Margin="30,132,0,0" VerticalAlignment="Top" Width="118" SelectionChanged="ListBox_SelectionChanged"/>
+        <ListBox x:Name="playlist" HorizontalAlignment="Left" Height="270" Margin="30,132,0,0" VerticalAlignment="Top" Width="118" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Title}" />
+                        <TextBlock Text="{Binding Path}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <Label x:Name="lblArtistName" HorizontalContentAlignment="Center" Content="Artist" VerticalAlignment="Top" Height="30" HorizontalAlignment="Center" Width="342" Margin="326,78,332,0" RenderTransformOrigin="0.62,0.067"/>
         <Image x:Name="imgThumb" Height="270" Margin="361,0"/>
     </Grid>
