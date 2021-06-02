@@ -16,5 +16,9 @@ namespace vpr_mp3player
             InitializeComponent();
         }
 
+        private void MusicControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

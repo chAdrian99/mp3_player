@@ -48,6 +48,9 @@ namespace vpr_mp3player.Controls
         {
             if (!isPlaying)
             {
+                //TODO crash wenn nichts in listbox gewählt ist
+                lblTitle.Content = (playlist.SelectedValue).ToString();
+                Player.Open(new Uri((playlist.SelectedValue).ToString()));
                 Player.Play();
             }
             else
@@ -75,33 +78,51 @@ namespace vpr_mp3player.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+
+        string[] files;
         private void btnOpenAudioFile_Click(object sender, RoutedEventArgs e)
-        { 
+        {
+            
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*"; 
-            if (openFileDialog.ShowDialog() == true)
+            openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
+            openFileDialog.ShowDialog();
+
+            files = openFileDialog.FileNames;
+
+            foreach (string song in files)
             {
-                Player.Open(new Uri(openFileDialog.FileName));
-                Player.Play();
-                isPlaying = true;
+                if (!playlist.Items.Contains(song))
+                {
+                    playlist.Items.Add(song);
+                }
             }
+
         }
 
         #endregion
-
         /// <summary>
         /// Aktualisiert das Play Button Icon
         /// </summary>
         private void UpdatePlayButton()
         {
-            if (isPlaying)
-            {
-                btnPlay.Content = new BitmapImage(new Uri("//play.png"));
-            }
-            else
-            {
-                btnPlay.Content = new BitmapImage(new Uri("//paused.png"));
-            }
+            //if (isPlaying)
+            //{
+            //    btnPlay.Content = new BitmapImage(new Uri("//play.png"));
+            //}
+            //else
+            //{
+            //    btnPlay.Content = new BitmapImage(new Uri("//paused.png"));
+            //}
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnNextSong_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -17,6 +17,6 @@
             <Label x:Name="lblArtistName" HorizontalContentAlignment="Center" Content="Artist" VerticalAlignment="Top" Height="30" HorizontalAlignment="Center" Width="342"/>
             <Image x:Name="imgThumb" HorizontalAlignment="Center" Height="270" Width="276"/>
         </StackPanel>
-        <controls:MusicControl Margin="0,0,10,0" />
+        <controls:MusicControl Margin="0,0,10,0" Loaded="MusicControl_Loaded" />
     </Grid>
 </Window>

@@ -13,5 +13,6 @@ namespace vpr_mp3player
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }
