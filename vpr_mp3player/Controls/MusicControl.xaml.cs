@@ -22,6 +22,7 @@ namespace vpr_mp3player.Controls
     public partial class MusicControl : UserControl
     {
         private bool isPlaying = false;
+        private int zahl = 0;
 
         private MediaPlayer _player = new MediaPlayer();
 
@@ -46,9 +47,13 @@ namespace vpr_mp3player.Controls
         /// <param name="e">Routed event args</param>
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            if (!isPlaying)
+            if (!isPlaying && zahl > 0)
             {
                 //TODO crash wenn nichts in listbox gewählt ist
+
+
+
+
                 lblTitle.Content = (playlist.SelectedValue).ToString();
                 Player.Open(new Uri((playlist.SelectedValue).ToString()));
                 Player.Play();
@@ -94,6 +99,7 @@ namespace vpr_mp3player.Controls
                 if (!playlist.Items.Contains(song))
                 {
                     playlist.Items.Add(song);
+                    zahl++;
                 }
             }
 
