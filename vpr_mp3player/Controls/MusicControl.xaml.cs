@@ -22,6 +22,8 @@ namespace vpr_mp3player.Controls
     public partial class MusicControl : UserControl
     {
         private bool isPlaying = false;
+
+        public string songPfad;
         
         private MediaPlayer _player = new MediaPlayer();
 
@@ -62,8 +64,10 @@ namespace vpr_mp3player.Controls
                     return;
                 }
 
-                lblTitle.Content = (playlist.SelectedValue).ToString();
-                Player.Open(new Uri((playlist.SelectedValue).ToString()));
+                Song selectedSong = playlist.SelectedItem as Song;
+
+                lblTitle.Content = selectedSong.Title.ToString();
+                Player.Open(new Uri(selectedSong.Path));
                 Player.Play();
             }
             else
@@ -100,6 +104,7 @@ namespace vpr_mp3player.Controls
             var path = openFileDialog.FileNames[0];
             var title = path.Split('\\').Last();
 
+            //songPfad = path;
             Songs.Add(new Song()
             {
                 Title = title,
@@ -127,7 +132,9 @@ namespace vpr_mp3player.Controls
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            //Song s1 = (sender as ListBox).SelectedItem as Song;
+            //songPfad = s1.Path;
+            //MessageBox.Show(""+ songPfad + s1.Path);
         }
 
         private void btnNextSong_Click(object sender, RoutedEventArgs e)
