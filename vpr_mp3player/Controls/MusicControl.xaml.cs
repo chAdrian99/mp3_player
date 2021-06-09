@@ -12,7 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.IO;
+using System.Reflection;
 
 namespace vpr_mp3player.Controls
 {
@@ -40,6 +41,7 @@ namespace vpr_mp3player.Controls
             InitializeComponent();
             Player.Volume = (double)sliVolume.Value;
             Songs = new List<Song>();
+            UpdatePlayButton();
         }
 
         #region Events
@@ -101,8 +103,10 @@ namespace vpr_mp3player.Controls
             openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
             openFileDialog.ShowDialog();
 
+            //TODO Beim schließen des Dialog Fensters schließt sich die App
+
             var path = openFileDialog.FileNames[0];
-            var title = path.Split('\\').Last();
+            var title = path.Split('\\').Last().Split('.').First();
 
             //songPfad = path;
             Songs.Add(new Song()
@@ -114,32 +118,31 @@ namespace vpr_mp3player.Controls
             playlist.ItemsSource = Songs;
         }
 
-        #endregion
+        
         /// <summary>
         /// Aktualisiert das Play Button Icon
         /// </summary>
         private void UpdatePlayButton()
         {
-            //if (isPlaying)
-            //{
-            //    btnPlay.Content = new BitmapImage(new Uri("//play.png"));
-            //}
-            //else
-            //{
-            //    btnPlay.Content = new BitmapImage(new Uri("//paused.png"));
-            //}
+            if (!isPlaying)
+            {
+                imgPlay.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/PlayImageMp3.png"));
+            }
+            else
+            {
+                imgPlay.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/PauseImageMp3.png"));
+            }
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Song s1 = (sender as ListBox).SelectedItem as Song;
-            //songPfad = s1.Path;
-            //MessageBox.Show(""+ songPfad + s1.Path);
+            
         }
 
         private void btnNextSong_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        #endregion
     }
 }
