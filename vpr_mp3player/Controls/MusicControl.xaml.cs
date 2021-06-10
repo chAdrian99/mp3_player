@@ -2,17 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace vpr_mp3player.Controls
@@ -41,6 +34,7 @@ namespace vpr_mp3player.Controls
             InitializeComponent();
             Player.Volume = (double)sliVolume.Value;
             Songs = new List<Song>();
+            UpdatePlayButton();
         }
 
         #region Events
@@ -87,7 +81,8 @@ namespace vpr_mp3player.Controls
         /// <param name="args"></param>
         private void ChangeMediaVolume(object sender, RoutedPropertyChangedEventArgs<double> args)
         {
-            Player.Volume = (double)sliVolume.Value;
+            float volUpdate = (float)(Math.Sqrt(sliVolume.Value) / 50);
+            Player.Volume = volUpdate;
         }
 
 
@@ -103,7 +98,7 @@ namespace vpr_mp3player.Controls
             openFileDialog.ShowDialog();
 
             var path = openFileDialog.FileNames[0];
-            var title = path.Split('\\').Last();
+            var title = path.Split('\\').Last().Split('.').First();
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -124,15 +119,22 @@ namespace vpr_mp3player.Controls
 
         void timer_Tick(object sender, EventArgs e)
         {
-            if (Player.Source != null)
-                lblCurrentTime.Content = String.Format("{0} / {1}", Player.Position.ToString(@"mm\:ss"), Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-            else
-                lblCurrentTime.Content = "0:00";
 
-            if (Player.Source != null)
-                lblEndTime.Content = String.Format( Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-            
-            
+            if ((Player.Source != null) && (Player.NaturalDuration.HasTimeSpan))
+            {
+                sliDuration.Minimum = 0;
+                sliDuration.Maximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
+                sliDuration.Value = Player.Position.TotalSeconds;
+
+                lblCurrentTime.Content = String.Format("{0} / {1}", Player.Position.ToString(@"mm\:ss"), Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+
+                lblEndTime.Content = String.Format(Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+            }
+
+            else
+            {
+                lblCurrentTime.Content = "0:00";
+            }
 
 
         }
@@ -144,14 +146,14 @@ namespace vpr_mp3player.Controls
         /// </summary>
         private void UpdatePlayButton()
         {
-            //if (isPlaying)
-            //{
-            //    btnPlay.Content = new BitmapImage(new Uri("//play.png"));
-            //}
-            //else
-            //{
-            //    btnPlay.Content = new BitmapImage(new Uri("//paused.png"));
-            //}
+            if (!isPlaying)
+            {
+                imgPlay.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/PlayImageMp3.png"));
+            }
+            else
+            {
+                imgPlay.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/PauseImageMp3.png"));
+            }
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -162,6 +164,11 @@ namespace vpr_mp3player.Controls
         }
 
         private void btnNextSong_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void sliDuration_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }

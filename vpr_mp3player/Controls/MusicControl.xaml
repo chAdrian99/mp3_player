@@ -7,7 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
     <Grid>
-        <Button x:Name="btnPlay" Content="Play" HorizontalAlignment="Left" Margin="479,508,0,0" VerticalAlignment="Top" Width="39" Height="27" RenderTransformOrigin="2.052,-0.465" Click="btnPlay_Click"/>
+        <Button x:Name="btnPlay" HorizontalAlignment="Left" Margin="471,508,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="2.052,-0.465" Click="btnPlay_Click">
+            <!--<Image Source="Resources/PlayImageMp3.png"/>-->
+            <Image x:Name="imgPlay" Source="..\Resources\PlayImageMp3.png"/>
+        </Button>
         <Button x:Name="btnLastSong" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="375,508,0,0" VerticalAlignment="Top" Width="75" Height="27"/>
         <Button x:Name="btnNextSong" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="543,508,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="btnNextSong_Click"/>
         <Slider x:Name="sliVolume" 
@@ -20,11 +23,11 @@
                 Interval="1"
                 Value="100"
                 Width="66"/>
-        <Slider x:Name="sliDuration" HorizontalAlignment="Left" Margin="250,451,0,0" VerticalAlignment="Top" Width="498" Height="26"/>
-        <Button x:Name="btnShuffle" Content="Shuffle" HorizontalAlignment="Left" Margin="151,444,0,0" VerticalAlignment="Top" Width="40" Height="40" RenderTransformOrigin="0.805,0.559"/>
-        <Button x:Name="btnLoop" Content="Loop" HorizontalAlignment="Left" Margin="802,444,0,0" VerticalAlignment="Top" Width="40" Height="40"/>
-        <Label x:Name="lblCurrentTime" Content="0:00" HorizontalContentAlignment="Center"  HorizontalAlignment="Left" Margin="126,451,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.452,-0.168" Width="190" Height="26"/>
-        <Label x:Name="lblEndTime" HorizontalContentAlignment="Center" Content="1:08&#xD;&#xA;" HorizontalAlignment="Left" Margin="753,451,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Slider x:Name="sliDuration" HorizontalAlignment="Left" Margin="250,451,0,0" VerticalAlignment="Top" Width="498" Height="26" ValueChanged="sliDuration_ValueChanged"/>
+        <Button x:Name="btnShuffle" Content="Shuffle" HorizontalAlignment="Left" Margin="156,444,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="0.805,0.559"/>
+        <Button x:Name="btnLoop" Content="Loop" HorizontalAlignment="Left" Margin="802,444,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
+        <Label x:Name="lblCurrentTime" HorizontalContentAlignment="Center" Content="0:00" HorizontalAlignment="Left" Margin="211,451,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.452,-0.168" Width="34" Height="26"/>
+        <Label x:Name="lblEndTime" HorizontalContentAlignment="Center" Content="1:08&#xD;&#xA;" HorizontalAlignment="Left" Margin="753,451,0,0" VerticalAlignment="Top" Width="34" Height="26"/>
         <Button x:Name="btnAddSong" Content="Add Song" Click="btnOpenAudioFile_Click" HorizontalAlignment="Left" Margin="30,402,0,0" VerticalAlignment="Top" Width="118" Height="24"/>
         <Label x:Name="lblTitle" HorizontalContentAlignment="Center" Content="TITEL" VerticalAlignment="Top" Height="52" FontSize="36" Margin="0,21,0,0"/>
         <ListBox x:Name="playlist" HorizontalAlignment="Left" Height="270" Margin="30,132,0,0" VerticalAlignment="Top" Width="118" SelectionChanged="ListBox_SelectionChanged">
@@ -32,7 +35,7 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Title}" />
-                        <TextBlock Text="{Binding Path}" />
+                        <!-- <TextBlock Text="{Binding Path}" /> -->
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
