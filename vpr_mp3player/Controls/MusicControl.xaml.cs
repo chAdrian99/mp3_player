@@ -2,17 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace vpr_mp3player.Controls
@@ -41,6 +34,7 @@ namespace vpr_mp3player.Controls
             InitializeComponent();
             Player.Volume = (double)sliVolume.Value;
             Songs = new List<Song>();
+            UpdatePlayButton();
         }
 
         #region Events
@@ -103,7 +97,7 @@ namespace vpr_mp3player.Controls
             openFileDialog.ShowDialog();
 
             var path = openFileDialog.FileNames[0];
-            var title = path.Split('\\').Last();
+            var title = path.Split('\\').Last().Split('.').First();
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -144,14 +138,14 @@ namespace vpr_mp3player.Controls
         /// </summary>
         private void UpdatePlayButton()
         {
-            //if (isPlaying)
-            //{
-            //    btnPlay.Content = new BitmapImage(new Uri("//play.png"));
-            //}
-            //else
-            //{
-            //    btnPlay.Content = new BitmapImage(new Uri("//paused.png"));
-            //}
+            if (!isPlaying)
+            {
+                imgPlay.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/PlayImageMp3.png"));
+            }
+            else
+            {
+                imgPlay.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/PauseImageMp3.png"));
+            }
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
