@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace vpr_mp3player.Controls
 {
@@ -104,15 +105,38 @@ namespace vpr_mp3player.Controls
             var path = openFileDialog.FileNames[0];
             var title = path.Split('\\').Last();
 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+
+
             //songPfad = path;
             Songs.Add(new Song()
             {
                 Title = title,
                 Path = path,
             });
-
+            
             playlist.ItemsSource = Songs;
         }
+
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            if (Player.Source != null)
+                lblCurrentTime.Content = String.Format("{0} / {1}", Player.Position.ToString(@"mm\:ss"), Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+            else
+                lblCurrentTime.Content = "0:00";
+
+            if (Player.Source != null)
+                lblEndTime.Content = String.Format( Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+            
+            
+
+
+        }
+
 
         #endregion
         /// <summary>
