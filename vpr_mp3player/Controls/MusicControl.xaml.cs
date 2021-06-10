@@ -81,7 +81,8 @@ namespace vpr_mp3player.Controls
         /// <param name="args"></param>
         private void ChangeMediaVolume(object sender, RoutedPropertyChangedEventArgs<double> args)
         {
-            Player.Volume = (double)sliVolume.Value;
+            float volUpdate = (float)(Math.Sqrt(sliVolume.Value) / 50);
+            Player.Volume = volUpdate;
         }
 
 
@@ -118,15 +119,22 @@ namespace vpr_mp3player.Controls
 
         void timer_Tick(object sender, EventArgs e)
         {
-            if (Player.Source != null)
-                lblCurrentTime.Content = String.Format("{0} / {1}", Player.Position.ToString(@"mm\:ss"), Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-            else
-                lblCurrentTime.Content = "0:00";
 
-            if (Player.Source != null)
-                lblEndTime.Content = String.Format( Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-            
-            
+            if ((Player.Source != null) && (Player.NaturalDuration.HasTimeSpan))
+            {
+                sliDuration.Minimum = 0;
+                sliDuration.Maximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
+                sliDuration.Value = Player.Position.TotalSeconds;
+
+                lblCurrentTime.Content = String.Format("{0} / {1}", Player.Position.ToString(@"mm\:ss"), Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+
+                lblEndTime.Content = String.Format(Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+            }
+
+            else
+            {
+                lblCurrentTime.Content = "0:00";
+            }
 
 
         }
@@ -156,6 +164,11 @@ namespace vpr_mp3player.Controls
         }
 
         private void btnNextSong_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void sliDuration_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:vpr_mp3player"
         mc:Ignorable="d"
         xmlns:controls="clr-namespace:vpr_mp3player.Controls"
+        ResizeMode="NoResize"
         Title="MainWindow" Height="600" Width="1000">
     <Grid x:Name="mainGrid">
         
