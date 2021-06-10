@@ -17,7 +17,7 @@ namespace vpr_mp3player.Controls
     {
         private bool isPlaying = false;
 
-        public string songPfad;
+        public double sliderCurrentTime;
         
         private MediaPlayer _player = new MediaPlayer();
 
@@ -84,7 +84,6 @@ namespace vpr_mp3player.Controls
             Player.Volume = (double)sliVolume.Value;
         }
 
-
         /// <summary>
         /// Öffnet ein Windows Fenster wo man ein Song hinzufügen kann.
         /// </summary>
@@ -104,8 +103,6 @@ namespace vpr_mp3player.Controls
             timer.Tick += timer_Tick;
             timer.Start();
 
-
-            //songPfad = path;
             Songs.Add(new Song()
             {
                 Title = title,
@@ -114,7 +111,6 @@ namespace vpr_mp3player.Controls
             
             playlist.ItemsSource = Songs;
         }
-
 
         void timer_Tick(object sender, EventArgs e)
         {
@@ -125,12 +121,11 @@ namespace vpr_mp3player.Controls
 
             if (Player.Source != null)
                 lblEndTime.Content = String.Format( Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-            
-            
+
+            sliderCurrentTime = Convert.ToDouble(lblCurrentTime);
 
 
         }
-
 
         #endregion
         /// <summary>
@@ -150,12 +145,15 @@ namespace vpr_mp3player.Controls
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Song s1 = (sender as ListBox).SelectedItem as Song;
-            //songPfad = s1.Path;
-            //MessageBox.Show(""+ songPfad + s1.Path);
+            
         }
 
         private void btnNextSong_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void sliDuration_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }

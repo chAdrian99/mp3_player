@@ -8,12 +8,11 @@
              d:DesignHeight="600" d:DesignWidth="1000">
     <Grid>
         <Button x:Name="btnPlay" HorizontalAlignment="Left" Margin="471,508,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="2.052,-0.465" Click="btnPlay_Click">
-            <!--<Image Source="Resources/PlayImageMp3.png"/>-->
             <Image x:Name="imgPlay" Source="..\Resources\PlayImageMp3.png"/>
         </Button>
         <Button x:Name="btnLastSong" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="375,508,0,0" VerticalAlignment="Top" Width="75" Height="27"/>
         <Button x:Name="btnNextSong" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="543,508,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="btnNextSong_Click"/>
-        <Slider x:Name="sliVolume" 
+        <Slider x:Name="sliVolume"
                 HorizontalAlignment="Left" 
                 Margin="250,508,0,0" 
                 VerticalAlignment="Top" 
@@ -23,7 +22,7 @@
                 Interval="1"
                 Value="100"
                 Width="66"/>
-        <Slider x:Name="sliDuration" HorizontalAlignment="Left" Margin="250,451,0,0" VerticalAlignment="Top" Width="498" Height="26"/>
+        <Slider x:Name="sliDuration" HorizontalAlignment="Left" Margin="250,451,0,0" VerticalAlignment="Top" Width="498" Height="26" ValueChanged="sliDuration_ValueChanged"/>
         <Button x:Name="btnShuffle" Content="Shuffle" HorizontalAlignment="Left" Margin="156,444,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="0.805,0.559"/>
         <Button x:Name="btnLoop" Content="Loop" HorizontalAlignment="Left" Margin="802,444,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
         <Label x:Name="lblCurrentTime" HorizontalContentAlignment="Center" Content="0:00" HorizontalAlignment="Left" Margin="211,451,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.452,-0.168" Width="34" Height="26"/>
@@ -35,7 +34,6 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Title}" />
-                        <!-- <TextBlock Text="{Binding Path}" /> -->
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -18,7 +18,7 @@ namespace vpr_mp3player
 
         private void MusicControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            //TODO LÖSCHEN
         }
     }
 }
