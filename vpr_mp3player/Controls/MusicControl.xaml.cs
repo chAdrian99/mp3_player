@@ -16,7 +16,7 @@ namespace vpr_mp3player.Controls
     public partial class MusicControl : UserControl
     {
         private bool isPlaying = false;
-
+        //
         public double sliderCurrentTime;
         
         private MediaPlayer _player = new MediaPlayer();
