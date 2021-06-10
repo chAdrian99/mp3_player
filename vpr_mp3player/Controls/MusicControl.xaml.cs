@@ -116,13 +116,10 @@ namespace vpr_mp3player.Controls
         {
             if (Player.Source != null)
                 lblCurrentTime.Content = String.Format("{0} / {1}", Player.Position.ToString(@"mm\:ss"), Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-            else
-                lblCurrentTime.Content = "0:00";
+            else { lblCurrentTime.Content = "0:00"; }
+                
 
-            if (Player.Source != null)
-                lblEndTime.Content = String.Format( Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-
-            sliderCurrentTime = Convert.ToDouble(lblCurrentTime);
+            
 
 
         }
