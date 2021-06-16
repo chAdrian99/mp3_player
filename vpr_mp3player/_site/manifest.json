@@ -1,0 +1,198 @@
+{
+  "homepages": [],
+  "source_base_path": "H:/VPR/vpr_mp3player/vpr_mp3player",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "m5bAnunmIGMJt2Q6EMRZ2xfT9NQWGQ3PQ/+AuiwUlQk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "eIaHTqQ3wJiec4l/cMguY01qfC1ev6vPSpzt9XqpGKw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "FeVXRFfToiNqcXl1w5E/PqScI17GbKxTOPzwK/ZBp5I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "CTx+i0rapz5ialri3nfg1uS7bQ7xnhBQMiKLKoJ7VIo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/vpr_mp3player.App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/vpr_mp3player.App.html",
+          "hash": "58EITjSZJ0ChwLPrZ+4RLpjYZRL2I0KZJE67uGchAo8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/vpr_mp3player.Controls.MusicControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/vpr_mp3player.Controls.MusicControl.html",
+          "hash": "u+QKzsoItOkSf0/XdRJzVvi5w/f4HcrrZm0gHqAAgu4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/vpr_mp3player.Controls.Song.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/vpr_mp3player.Controls.Song.html",
+          "hash": "Sr6Y6fPgkB8LsC7Hm45b4WX0dNlalweWfKlMNq2rzjA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/vpr_mp3player.Controls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/vpr_mp3player.Controls.html",
+          "hash": "tmHlrP2TbWcYvVDYHc3idM2rzeI/k+8B8VxAQvqeQPo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/vpr_mp3player.MainWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/vpr_mp3player.MainWindow.html",
+          "hash": "rVv5EY87SPh3YOAWVcgYDSuGEGtr3ifeV3ASdIZQS4k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/vpr_mp3player.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/vpr_mp3player.html",
+          "hash": "u5AtnIG/tGr+f4dwCE7Dd61uGb+APsnbiiQXWq1LPUI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "Oa9PuD4E1hvZnCkVjUgzNBX6S00Zo5YilamTERTZo54="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 6,
+          "skipped_file_count": 3
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

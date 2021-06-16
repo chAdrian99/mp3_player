@@ -8,12 +8,11 @@
              d:DesignHeight="600" d:DesignWidth="1000">
     <Grid>
         <Button x:Name="btnPlay" HorizontalAlignment="Left" Margin="471,508,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="2.052,-0.465" Click="btnPlay_Click">
-            <!--<Image Source="Resources/PlayImageMp3.png"/>-->
             <Image x:Name="imgPlay" Source="..\Resources\PlayImageMp3.png"/>
         </Button>
         <Button x:Name="btnLastSong" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="375,508,0,0" VerticalAlignment="Top" Width="75" Height="27"/>
         <Button x:Name="btnNextSong" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="543,508,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="btnNextSong_Click"/>
-        <Slider x:Name="sliVolume" 
+        <Slider x:Name="sliVolume"
                 HorizontalAlignment="Left" 
                 Margin="250,508,0,0" 
                 VerticalAlignment="Top" 
@@ -35,7 +34,6 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Title}" />
-                        <!-- <TextBlock Text="{Binding Path}" /> -->
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

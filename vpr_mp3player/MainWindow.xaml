@@ -9,11 +9,11 @@
         ResizeMode="NoResize"
         Title="MainWindow" Height="600" Width="1000">
     <Grid x:Name="mainGrid">
-        
-
         <!-- Musik Steuerung Unten -->
-        <controls:MusicControl Loaded="MusicControl_Loaded" Grid.RowSpan="2" HorizontalAlignment="Left" Width="992" Height="569" VerticalAlignment="Top" />
-
-
-        </Grid>
+        <controls:MusicControl Loaded="MusicControl_Loaded" 
+                               Grid.RowSpan="2" 
+                               HorizontalAlignment="Left" 
+                               Width="992" Height="569" 
+                               VerticalAlignment="Top"/>
+    </Grid>
 </Window>
