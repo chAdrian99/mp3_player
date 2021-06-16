@@ -87,7 +87,7 @@ namespace vpr_mp3player.Controls
         /// <param name="args"></param>
         private void ChangeMediaVolume(object sender, RoutedPropertyChangedEventArgs<double> args)
         {
-            float volUpdate = (float)(Math.Sqrt(sliVolume.Value) / 50);
+            float volUpdate = (float)(Math.Sqrt(sliVolume.Value) / 10);
             Player.Volume = volUpdate;
         }
 
