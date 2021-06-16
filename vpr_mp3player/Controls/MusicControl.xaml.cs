@@ -114,14 +114,20 @@ namespace vpr_mp3player.Controls
 
         void timer_Tick(object sender, EventArgs e)
         {
-            if (Player.Source != null)
+            if ((Player.Source != null) && (Player.NaturalDuration.HasTimeSpan))
+            {
+                sliDuration.Minimum = 0;
+                sliDuration.Maximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
+                sliDuration.Value = Player.Position.TotalSeconds;
+
                 lblCurrentTime.Content = String.Format("{0} / {1}", Player.Position.ToString(@"mm\:ss"), Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-            else { lblCurrentTime.Content = "0:00"; }
-                
 
-            
-
-
+                lblEndTime.Content = String.Format(Player.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+            }
+            else
+            {
+                lblCurrentTime.Content = "0:00";
+            }
         }
 
         #endregion
