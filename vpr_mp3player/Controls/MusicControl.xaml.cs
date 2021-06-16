@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.Windows.Input;
 
 namespace vpr_mp3player.Controls
 {
@@ -15,6 +17,10 @@ namespace vpr_mp3player.Controls
     /// </summary>
     public partial class MusicControl : UserControl
     {
+
+
+        private bool userIsDraggingSlider = false;
+
         private bool isPlaying = false;
 
         public string songPfad;
@@ -120,7 +126,7 @@ namespace vpr_mp3player.Controls
         void timer_Tick(object sender, EventArgs e)
         {
 
-            if ((Player.Source != null) && (Player.NaturalDuration.HasTimeSpan))
+            if ((Player.Source != null) && (Player.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
             {
                 sliDuration.Minimum = 0;
                 sliDuration.Maximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
@@ -168,9 +174,24 @@ namespace vpr_mp3player.Controls
 
         }
 
+        private void sliProgress_DragStarted(object sender, DragStartedEventArgs e)
+        {
+            userIsDraggingSlider = true;
+        }
+
+        private void sliDuration_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            userIsDraggingSlider = false;
+            Player.Position = TimeSpan.FromSeconds(sliDuration.Value);
+        }
+
         private void sliDuration_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            lblCurrentTime.Content = TimeSpan.FromSeconds(sliDuration.Value).ToString(@"hh\:mm\:ss");
         }
+
+
+
+
     }
 }

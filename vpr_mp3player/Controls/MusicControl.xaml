@@ -23,7 +23,7 @@
                 Interval="1"
                 Value="100"
                 Width="66"/>
-        <Slider x:Name="sliDuration" HorizontalAlignment="Left" Margin="250,451,0,0" VerticalAlignment="Top" Width="498" Height="26" ValueChanged="sliDuration_ValueChanged"/>
+        <Slider x:Name="sliDuration" HorizontalAlignment="Left" Margin="250,451,0,0" VerticalAlignment="Top" Width="498" Height="26" ValueChanged="sliDuration_ValueChanged" Thumb.DragCompleted="sliDuration_DragCompleted" Thumb.DragStarted="sliProgress_DragStarted"/>
         <Button x:Name="btnShuffle" Content="Shuffle" HorizontalAlignment="Left" Margin="156,444,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="0.805,0.559"/>
         <Button x:Name="btnLoop" Content="Loop" HorizontalAlignment="Left" Margin="802,444,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
         <Label x:Name="lblCurrentTime" HorizontalContentAlignment="Center" Content="0:00" HorizontalAlignment="Left" Margin="211,451,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.452,-0.168" Width="34" Height="26"/>
