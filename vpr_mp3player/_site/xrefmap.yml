@@ -38,6 +38,19 @@ references:
   isSpec: "True"
   fullName: vpr_mp3player.Controls.MusicControl.MusicControl
   nameWithType: MusicControl.MusicControl
+- uid: vpr_mp3player.Controls.MusicControl.CurrentSongIndex
+  name: CurrentSongIndex
+  href: api/vpr_mp3player.Controls.MusicControl.html#vpr_mp3player_Controls_MusicControl_CurrentSongIndex
+  commentId: P:vpr_mp3player.Controls.MusicControl.CurrentSongIndex
+  fullName: vpr_mp3player.Controls.MusicControl.CurrentSongIndex
+  nameWithType: MusicControl.CurrentSongIndex
+- uid: vpr_mp3player.Controls.MusicControl.CurrentSongIndex*
+  name: CurrentSongIndex
+  href: api/vpr_mp3player.Controls.MusicControl.html#vpr_mp3player_Controls_MusicControl_CurrentSongIndex_
+  commentId: Overload:vpr_mp3player.Controls.MusicControl.CurrentSongIndex
+  isSpec: "True"
+  fullName: vpr_mp3player.Controls.MusicControl.CurrentSongIndex
+  nameWithType: MusicControl.CurrentSongIndex
 - uid: vpr_mp3player.Controls.MusicControl.Player
   name: Player
   href: api/vpr_mp3player.Controls.MusicControl.html#vpr_mp3player_Controls_MusicControl_Player

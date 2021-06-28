@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "H:/VPR/vpr_mp3player/vpr_mp3player",
+  "source_base_path": "C:/Users/Steffen/Desktop/VPR/Code/mp3_player-main/mp3player/mp3_player/vpr_mp3player",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "m5bAnunmIGMJt2Q6EMRZ2xfT9NQWGQ3PQ/+AuiwUlQk="
+          "hash": "wd/JJu/f6J0WgfOINYdnbSp+OOoProSBr5YSqBBUZ+c="
         }
       },
       "is_incremental": true,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "eIaHTqQ3wJiec4l/cMguY01qfC1ev6vPSpzt9XqpGKw="
+          "hash": "oB+IHIXXLrtZV7skapGlVLg4jubWzuww4+zTBOcn8f4="
         }
       },
       "is_incremental": true,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "FeVXRFfToiNqcXl1w5E/PqScI17GbKxTOPzwK/ZBp5I="
+          "hash": "2wsV91vtX6vNKYOzTJZo9DG3aTRX9k+zgRwJ3HsO7yU="
         }
       },
       "is_incremental": true,
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/vpr_mp3player.App.html",
-          "hash": "58EITjSZJ0ChwLPrZ+4RLpjYZRL2I0KZJE67uGchAo8="
+          "hash": "wSaPchS5Fxw8zbUlloa4EyzLQjaeEy7oetzc7s1Q7UQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/vpr_mp3player.Controls.MusicControl.html",
-          "hash": "u+QKzsoItOkSf0/XdRJzVvi5w/f4HcrrZm0gHqAAgu4="
+          "hash": "dlLDw50DiMh6Zu9x3q0DGrw6xWNNLMcX2A3LJN43/ec="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/vpr_mp3player.Controls.Song.html",
-          "hash": "Sr6Y6fPgkB8LsC7Hm45b4WX0dNlalweWfKlMNq2rzjA="
+          "hash": "lzyl3Pqr+KEIAKvB2DIvtG3Uzh9X9VnAX6/7KNkePcs="
         }
       },
       "is_incremental": true,
@@ -108,7 +108,7 @@
           "hash": "tmHlrP2TbWcYvVDYHc3idM2rzeI/k+8B8VxAQvqeQPo="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -117,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "api/vpr_mp3player.MainWindow.html",
-          "hash": "rVv5EY87SPh3YOAWVcgYDSuGEGtr3ifeV3ASdIZQS4k="
+          "hash": "YQOK/UO56POxs7qOucVaKr6BN+cLgTgI5/81Sel3ezU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -132,7 +132,7 @@
           "hash": "u5AtnIG/tGr+f4dwCE7Dd61uGb+APsnbiiQXWq1LPUI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -167,7 +167,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 6,
-          "skipped_file_count": 3
+          "skipped_file_count": 6
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

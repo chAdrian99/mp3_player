@@ -22,10 +22,24 @@ namespace vpr_mp3player.Controls
         private bool userIsDraggingSlider = false;
 
         private bool isPlaying = false;
-        //
+
+        private bool loop = false;
+        
+        private bool shuffle = false;
+
         public double sliderCurrentTime;
         
         private MediaPlayer _player = new MediaPlayer();
+
+        Random rndShuffle = new Random();
+
+        private int currentSongIndex = 0;
+
+        public int CurrentSongIndex
+        {
+            get { return currentSongIndex; }
+            set { currentSongIndex = value; }
+        }
 
         public List<Song> Songs { get; set; }
 
@@ -43,6 +57,14 @@ namespace vpr_mp3player.Controls
             UpdatePlayButton();
         }
 
+        private void songNextMethod()
+        {
+            Uri pathToSong = new Uri(Songs[CurrentSongIndex].Path);
+            lblTitle.Content = Songs[CurrentSongIndex].Title.ToString();
+            Player.Open(pathToSong);
+            Player.Play();
+        }
+
         #region Events
 
         /// <summary>
@@ -50,6 +72,8 @@ namespace vpr_mp3player.Controls
         /// </summary>
         /// <param name="sender">Sender element</param>
         /// <param name="e">Routed event args</param>
+
+        int active = 0;
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             if (playlist.Items.Count <= 0)
@@ -67,8 +91,14 @@ namespace vpr_mp3player.Controls
 
                 Song selectedSong = playlist.SelectedItem as Song;
 
+                CurrentSongIndex = Array.IndexOf(Songs.ToArray(), selectedSong);
+
+                if(active == 0)
+                {
+                    Player.Open(new Uri(selectedSong.Path));
+                    Player.Play();
+                }
                 lblTitle.Content = selectedSong.Title.ToString();
-                Player.Open(new Uri(selectedSong.Path));
                 Player.Play();
             }
             else
@@ -76,6 +106,7 @@ namespace vpr_mp3player.Controls
                 Player.Pause();
             }
 
+            active++;
             isPlaying = !isPlaying;
             UpdatePlayButton();
         }
@@ -87,6 +118,7 @@ namespace vpr_mp3player.Controls
         /// <param name="args"></param>
         private void ChangeMediaVolume(object sender, RoutedPropertyChangedEventArgs<double> args)
         {
+
             float volUpdate = (float)(Math.Sqrt(sliVolume.Value) / 10);
             Player.Volume = volUpdate;
         }
@@ -108,7 +140,7 @@ namespace vpr_mp3player.Controls
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
-            timer.Start();
+            timer.Start(); 
 
             Songs.Add(new Song()
             {
@@ -116,14 +148,18 @@ namespace vpr_mp3player.Controls
                 Path = path,
             });
             
-            playlist.ItemsSource = Songs;
+            playlist.Items.Clear();
+            foreach(var song in Songs)
+            {
+                playlist.Items.Add(song);
+            }
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
 
-            if ((Player.Source != null) && (Player.NaturalDuration.HasTimeSpan))
-            {
+            if ((Player.Source != null) && (Player.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
+            { 
                 sliDuration.Minimum = 0;
                 sliDuration.Maximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
                 sliDuration.Value = Player.Position.TotalSeconds;
@@ -135,7 +171,43 @@ namespace vpr_mp3player.Controls
             else
             {
                 lblCurrentTime.Content = "0:00";
+                lblEndTime.Content = "0:00";
             }
+
+            //next song when ended
+            if (sliDuration.Value == sliDuration.Maximum)
+            {
+                //loop active
+                if (loop && !shuffle)
+                {
+                    Player.Position = TimeSpan.Zero;
+                    Player.Play();
+                }
+                //shuffle active
+                else if (shuffle && !loop)
+                {
+                    int shuffleSong = rndShuffle.Next(0, Songs.Count);
+                    Uri pathToSong = new Uri(Songs[shuffleSong].Path);
+                    lblTitle.Content = Songs[CurrentSongIndex].Title.ToString();
+                    Player.Open(pathToSong);
+                    Player.Play();
+                }
+                //go next in q
+                else
+                {
+                    if(CurrentSongIndex < Songs.Count())
+                    {
+                        CurrentSongIndex++;
+                        songNextMethod();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                //TODO CurrentSongIndex in eigene Funktion, dann jedesmal aufrufen mit Index++/--/shuffle
+            }
+
         }
 
         #endregion
@@ -159,10 +231,37 @@ namespace vpr_mp3player.Controls
             
         }
 
+        private void btnLastSong_Click(object sender, RoutedEventArgs e)
+        {
+            if (CurrentSongIndex > 0)
+            {
+
+                CurrentSongIndex--;
+                songNextMethod();
+            }
+
+            else
+            {
+                return;
+            }
+        }
+
         private void btnNextSong_Click(object sender, RoutedEventArgs e)
         {
 
+            if(CurrentSongIndex <= playlist.Items.Count)
+            {
+                CurrentSongIndex++;
+                songNextMethod();
+            }
+
+            else
+            {
+                return;
+            }
         }
+
+
 
         private void sliProgress_DragStarted(object sender, DragStartedEventArgs e)
         {
@@ -180,8 +279,35 @@ namespace vpr_mp3player.Controls
             lblCurrentTime.Content = TimeSpan.FromSeconds(sliDuration.Value).ToString(@"hh\:mm\:ss");
         }
 
+        int loopClick;
+        private void btnLoop_Click(object sender, RoutedEventArgs e)
+        {
+            loopClick++;
 
+            if (loopClick % 2 == 1)
+            {
+                loop = true;
+            }
+            else
+            {
+                loop = false;
 
+            }
+        }
 
+        int shuffleClick;
+        private void btnShuffle_Click(object sender, RoutedEventArgs e)
+        {
+            shuffleClick++;
+
+            if(shuffleClick % 2 == 1)
+            {
+                shuffle = true;
+            }
+            else
+            {
+                shuffle = false;
+            }
+        }
     }
 }
