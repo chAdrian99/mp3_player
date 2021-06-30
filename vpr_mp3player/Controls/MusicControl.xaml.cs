@@ -187,10 +187,8 @@ namespace vpr_mp3player.Controls
                 else if (shuffle && !loop)
                 {
                     int shuffleSong = rndShuffle.Next(0, Songs.Count);
-                    Uri pathToSong = new Uri(Songs[shuffleSong].Path);
-                    lblTitle.Content = Songs[CurrentSongIndex].Title.ToString();
-                    Player.Open(pathToSong);
-                    Player.Play();
+                    shuffleSong = CurrentSongIndex;
+                    songNextMethod();
                 }
                 //go next in q
                 else
@@ -249,7 +247,7 @@ namespace vpr_mp3player.Controls
         private void btnNextSong_Click(object sender, RoutedEventArgs e)
         {
 
-            if(CurrentSongIndex <= playlist.Items.Count)
+            if(CurrentSongIndex < Songs.Count() -1)
             {
                 CurrentSongIndex++;
                 songNextMethod();
