@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:vpr_mp3player.Controls"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="YellowBrush" Color="Yellow" />
+    </UserControl.Resources>
     <Grid>
         <Button x:Name="btnPlay" HorizontalAlignment="Left" Margin="471,508,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="2.052,-0.465" Click="btnPlay_Click" Background="#111111" BorderBrush="#2abc3b">
             <Image x:Name="imgPlay" Source="..\Resources\PlayImageMp3.png"/>
@@ -15,7 +19,7 @@
         <Slider x:Name="sliVolume"
                 HorizontalAlignment="Left" 
                 Margin="250,508,0,0" 
-                VerticalAlignment="Top" 
+                VerticalAlignment="Top"
                 ValueChanged="ChangeMediaVolume"
                 Maximum="100"
                 Minimum="0"
@@ -23,8 +27,9 @@
                 Value="100"
                 Width="66"/>
         <Slider x:Name="sliDuration" HorizontalAlignment="Left" Margin="250,451,0,0" VerticalAlignment="Top" Width="498" Height="26" ValueChanged="sliDuration_ValueChanged" Thumb.DragCompleted="sliDuration_DragCompleted" Thumb.DragStarted="sliProgress_DragStarted"/>
-        <Button x:Name="btnShuffle"  HorizontalAlignment="Left" Margin="156,444,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Click="btnShuffle_Click"  Background="#111111" BorderBrush="#2abc3b">
+        <Button x:Name="btnShuffle"  HorizontalAlignment="Left" Margin="156,444,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Click="btnShuffle_Click"  Background="#111111" BorderBrush="#2abc3b" MouseEnter="btnShuffle_MouseEnter" MouseLeave="btnShuffle_MouseLeave">
             <Image x:Name="imgShuffle" Source="..\\Resources\ShuffleImageMp3.png"/>
+            
         </Button>
         <Button x:Name="btnLoop" HorizontalAlignment="Left" Margin="802,444,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnLoop_Click" Background="#111111" BorderBrush="#2abc3b">
             <Image x:Name="imgLoop" Source="..\\Resources\LoopImageMp3.png"/>
@@ -43,7 +48,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Label x:Name="lblArtistName" HorizontalContentAlignment="Center" Content="Artist" VerticalAlignment="Top" Height="30" HorizontalAlignment="Center" Width="342" Margin="326,78,332,0" RenderTransformOrigin="0.62,0.067" Foreground="#1b8327"/>
-        <MediaElement x:Name="backgroundMedia" HorizontalAlignment="Left" Height="320" Margin="375,113,0,0" VerticalAlignment="Top" Width="240" Source="mp3player_background.gif" LoadedBehavior="Play" Visibility="Visible"/>
+        <!--<MediaElement x:Name="backgroundMedia" HorizontalAlignment="Left" Height="320" Margin="375,113,0,0" VerticalAlignment="Top" Width="240" Source="mp3player_background.gif" LoadedBehavior="Play" Visibility="Visible"/>-->
         <!--<Image x:Name="imgThumb" Height="320" Width="240" Margin="378,108,382,172"/>-->
+        <Image gif:ImageBehavior.AnimatedSource="mp3player_background.gif" Width="240" Height="320" Margin="378,113,382,167"/>
     </Grid>
 </UserControl>

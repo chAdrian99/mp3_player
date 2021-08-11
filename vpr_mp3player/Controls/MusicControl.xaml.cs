@@ -308,5 +308,17 @@ namespace vpr_mp3player.Controls
                 shuffle = false;
             }
         }
+
+        private void btnShuffle_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button btn = sender as Button;
+            btn.Background = new SolidColorBrush(Colors.Red);
+        }
+
+        private void btnShuffle_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button btn = sender as Button;
+            btn.Background = new SolidColorBrush(Colors.Green);
+        }
     }
 }
