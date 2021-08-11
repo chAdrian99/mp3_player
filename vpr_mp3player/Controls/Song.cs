@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
 namespace vpr_mp3player.Controls
-{
+{   
     public class Song
     {
         public string Title { get; set; }

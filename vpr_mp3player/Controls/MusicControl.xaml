@@ -43,6 +43,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Label x:Name="lblArtistName" HorizontalContentAlignment="Center" Content="Artist" VerticalAlignment="Top" Height="30" HorizontalAlignment="Center" Width="342" Margin="326,78,332,0" RenderTransformOrigin="0.62,0.067" Foreground="#1b8327"/>
-        <Image x:Name="imgThumb" Height="270" Margin="361,0"/>
+        <MediaElement x:Name="backgroundMedia" HorizontalAlignment="Left" Height="320" Margin="375,113,0,0" VerticalAlignment="Top" Width="240" Source="mp3player_background.gif" LoadedBehavior="Play" Visibility="Visible"/>
+        <!--<Image x:Name="imgThumb" Height="320" Width="240" Margin="378,108,382,172"/>-->
     </Grid>
 </UserControl>

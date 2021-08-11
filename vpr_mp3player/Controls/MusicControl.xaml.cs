@@ -53,6 +53,7 @@ namespace vpr_mp3player.Controls
         {
             InitializeComponent();
             Player.Volume = (double)sliVolume.Value;
+            //backgroundMedia.Play();
             Songs = new List<Song>();
             UpdatePlayButton();
         }
